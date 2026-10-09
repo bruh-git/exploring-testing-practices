@@ -44,8 +44,14 @@ Escolha uma prática ou dado de teste relevante e explique com suas próprias pa
 
 ## Respostas
 
-Repositório: `<URL_DO_REPOSITÓRIO>`
+Repositório: https://github.com/psf/requests
 
-URL TestMiner: `<URL_NO_TESTMINER>`
+URL TestMiner: https://andrehora.github.io/testminer/#psf/requests
 
-Explicação: `<SUA_EXPLICAÇÃO>`
+Explicação: No arquivo [`tests/conftest.py`](https://github.com/psf/requests/blob/main/tests/conftest.py), o projeto utiliza a fixture `clean_proxy_environ` com `autouse=True` para remover automaticamente variáveis de ambiente de proxy, como `HTTP_PROXY` e `HTTPS_PROXY`, antes de cada teste. Isso evita que a configuração de rede da máquina do desenvolvedor ou do ambiente de integração contínua altere inesperadamente os resultados, tornando os testes mais isolados e reproduzíveis. O mesmo arquivo centraliza fixtures reutilizáveis para URLs de teste e um servidor HTTPS local, reduzindo a repetição de configuração. O uso de `monkeypatch` também permite que as alterações no ambiente sejam revertidas ao fim do teste.
+
+**Evidência no TestMiner:** a visão geral classifica 10 arquivos como testes, 12 como auxiliares de teste e 1 como teste de integração contínua. A seção *Test History* sugere que a quantidade de arquivos classificados como testes aumentou nas versões exibidas, chegando a 10 na versão mais recente mostrada. Em *Test Dependencies*, aparecem bibliotecas usadas no contexto de testes, como `pytest`, `pytest-cov` e `pytest-httpbin`. Isso ajuda a observar a organização e a evolução dos testes, embora a classificação do TestMiner, por si só, não prove que todos os testes passam ou que a cobertura é suficiente.
+
+Visão do Requests no TestMiner: Overview, Test Location, Test History e Test Dependencies <img width="771" height="899" alt="image" src="https://github.com/user-attachments/assets/9280fc4f-188a-4db1-81ec-a84a86833399" />
+
+[Consultar a análise interativa do Requests no TestMiner](https://andrehora.github.io/testminer/#psf/requests)
